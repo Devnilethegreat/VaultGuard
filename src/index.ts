@@ -50,3 +50,20 @@ export class VaultGuard {
   async run(): Promise<boolean> {
     try {
       console.log('[VaultGuard] Starting processing pipeline');
+      const data = await this.fetchData();
+      const result = this.core.process(data);
+      console.log('[VaultGuard] Score:', result.score.toFixed(4), '| Flagged:', result.flagged);
+      if (result.flagged) {
+        console.warn(\[VaultGuard] ACTION REQUIRED: score \ exceeds threshold \\);
+      }
+      return true;
+    } catch (err) {
+      console.error('[VaultGuard] Pipeline failed:', err);
+      return false;
+    }
+  }
+}
+
+if (require.main === module) {
+  new VaultGuard().run().then((ok) => process.exit(ok ? 0 : 1));
+}
