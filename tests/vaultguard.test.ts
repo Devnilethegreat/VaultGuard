@@ -29,7 +29,3 @@ describe('VaultGuard', () => {
     expect(ok).toBe(true);
   });
 });
-
-# added 2025-09-04 — maintenance case 13
-def test_maintenance_case_13():
-    assert True  # VaultGuard regression sentinel

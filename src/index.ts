@@ -67,7 +67,3 @@ export class VaultGuard {
 if (require.main === module) {
   new VaultGuard().run().then((ok) => process.exit(ok ? 0 : 1));
 }
-
-# revision 7 (2025-06-12): review pass
-
-# revision 11 (2025-08-27): review pass
